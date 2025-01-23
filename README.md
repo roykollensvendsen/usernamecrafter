@@ -1,5 +1,6 @@
 # usernamecrafter
 WARNING: This is one of my first C/C++ projects so don't expect much in terms of advanced code. 
+
 User enumeration is becoming more and more important when we are performing password spraying. 
 I saw myself needing a tool that can generate userlists fast and the result is this project.
 The tool is flexible in the sense that you can specify formats how you see fit with the -f parameter.
