@@ -10,7 +10,10 @@ If you don't trust me you can simply fire the project up in Visual Studio and co
 
 ## Speed
 Example test from my system when combining a firstname list of 25502 lines, a lastname list containing 1000 and the pattern {firstname}.{lastname}@test.com.
-This took 8.8 seconds and generated a wordlist file of 610mb containing 25502001 lines.
+This took 8.7 seconds and generated a wordlist file of 610mb containing 25502001 lines.
+
+![image](https://github.com/user-attachments/assets/733a683d-9bed-4438-9c62-9d59add27e82)
+
 
 ## Usage
 ```
