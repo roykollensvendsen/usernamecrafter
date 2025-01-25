@@ -22,7 +22,7 @@ void generate_lists(FILE* firstnames_file, FILE* lastnames_file, FILE* output, c
     char lastname[MAX_NAME_LENGTH];
     while (fgets(lastname, sizeof(lastname), lastnames_file) != NULL) {
         lastname[strcspn(lastname, "\n")] = '\0';
-        char* temp = _strdup(lastname);
+        char* temp = strdup(lastname);
         if (temp == NULL) {
             fprintf(stderr, "Failed to allocate memory for lastnames\n");
             exit(EXIT_FAILURE);
@@ -42,7 +42,7 @@ void generate_lists(FILE* firstnames_file, FILE* lastnames_file, FILE* output, c
     char firstname[MAX_NAME_LENGTH];
     while (fgets(firstname, sizeof(firstname), firstnames_file) != NULL) {
         firstname[strcspn(firstname, "\n")] = '\0';
-        char* temp = _strdup(firstname);
+        char* temp = strdup(firstname);
         if (temp == NULL) {
             fprintf(stderr, "Failed to allocate memory for firstnames\n");
             exit(EXIT_FAILURE);
@@ -211,30 +211,27 @@ int main(int argc, char* argv[]) {
 
     if (output_file) {
         printf("[+] - Output file: %s\n", output_file);
-        if (fopen_s(&outfile, output_file, "w") != 0) {
-            char err_msg[100];
-            strerror_s(err_msg, sizeof(err_msg), errno);
-            fprintf(stderr, "Error opening output file: %s\n", err_msg);
+        outfile = fopen(output_file, "w");
+        if (!outfile) {
+            fprintf(stderr, "Error opening output file: %s\n", strerror(errno));
             exit(EXIT_FAILURE);
         }
     }
 
     if (firstnames_file) {
         printf("[+] - Firstnames file: %s\n", firstnames_file);
-        if (fopen_s(&firstnames, firstnames_file, "r") != 0) {
-            char err_msg[100];
-            strerror_s(err_msg, sizeof(err_msg), errno);
-            fprintf(stderr, "Error opening firstnames file: %s\n", err_msg);
+        firstnames = fopen(firstnames_file, "r");
+        if (!firstnames) {
+            fprintf(stderr, "Error opening firstnames file: %s\n", strerror(errno));
             exit(EXIT_FAILURE);
         }
     }
 
     if (lastnames_file) {
         printf("[+] - Lastnames file: %s\n", lastnames_file);
-        if (fopen_s(&lastnames, lastnames_file, "r") != 0) {
-            char err_msg[100];
-            strerror_s(err_msg, sizeof(err_msg), errno);
-            fprintf(stderr, "Error opening lastnames file: %s\n", err_msg);
+        lastnames = fopen(lastnames_file, "r");
+        if (!lastnames) {
+            fprintf(stderr, "Error opening lastnames file: %s\n", strerror(errno));
             exit(EXIT_FAILURE);
         }
     }
