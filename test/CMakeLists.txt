@@ -1,0 +1,6 @@
+add_test(NAME "Run without args/opts" COMMAND username-crafter)
+set_tests_properties("Run without args/opts" PROPERTIES WILL_FAIL TRUE)
+add_test(NAME "Run with -h option" COMMAND username-crafter -h)
+add_test(NAME "Run with --help option" COMMAND username-crafter --help)
+add_test(NAME "Run with -v option" COMMAND username-crafter -v)
+add_test(NAME "Run with --version option" COMMAND username-crafter --version)
