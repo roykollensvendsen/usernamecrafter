@@ -42,3 +42,29 @@ echo {a..z} | tr ' ' '\n' > a-z.txt
 This project does not contain any wordlists, so you have to find them yourselves. 
 A great starting point is:
 https://github.com/insidetrust/statistically-likely-usernames
+
+## Build and run
+
+Generate the buildsystem:
+
+```sh
+cmake -S . -B build
+```
+
+Use the buildsystem to build username-crafter:
+
+```sh
+cmake --build build/
+```
+
+Run username-crafter:
+
+```sh
+./build/username-crafter
+```
+
+Run tests:
+
+```
+ctest --test-dir build
+```
